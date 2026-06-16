@@ -14,3 +14,14 @@ python train_all.py --dataset kh --methods fno sno usno cascade --epochs 200
 # run model testing
 python test.py --data_dir data --ckpt_dir checkpoints --fig_dir figures --dataset kh --H 128 --W 128 --hidden 32
 ```
+
+## Urban100 inpainting
+check the Urban100 folder, download the data, and train the model as
+```bash
+# prepare the data
+python prepare_urban.py
+# run model training
+python train_urban.py
+# run model testing
+python test_urban.py
+```
