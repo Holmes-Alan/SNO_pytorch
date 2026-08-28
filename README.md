@@ -1,13 +1,23 @@
 # SNO_pytorch
 Shearlet Neural Operator
 
-## Step 1: generate sheared kelvin helmotz data (KH) 
+## Step 1: train shock bubble super-resolution
+```bash
+python3 train_shock.py --task sr --methods fno sno usno cascade flower warpsno snofast flowersno
+```
+
+## Step 2: test shock bubble super-resolution
+```bash
+python3 test_shock.py --task sr --ckpt_dir checkpoints/shock --out_dir results/shock --fig_dir figures/shock
+```
+
+## Step 3: generate sheared kelvin helmotz data (KH) 
 Following **SHEARLET NEURAL OPERATORS FOR ANISOTROPIC-SHOCK-DOMINATED AND MULTI-SCALE PARAMETRIC PARTIAL DIFFERENTIAL EQUATIONS**  [paper](https://arxiv.org/pdf/2604.25181)
 ```bash
 # run data generation code
 python dataset.py --data_dir data --datasets kh --H 128 --W 128 --n_train 200 --n_test 50
 ```
-## Step 2: train different models on KH dataset
+## Step 4: train different models on KH dataset
 ```bash
 # run model training
 python train_all.py --dataset kh --methods fno sno usno cascade --epochs 200
